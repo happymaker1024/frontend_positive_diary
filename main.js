@@ -5,7 +5,13 @@ function saveHandler() {
     let text = $("#text").val();
     let mood = $("#mood").val();
 
-    diary = `<p>${date}: ${text} - ${mood}</p>` + diary;
+    diary = `<a href="#" class="list-group-item list-group-item-action">
+            <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">${text}</h5>
+            <small class="text-body-secondary">${date}</small>
+            </div>
+            <small class="text-body-secondary">${mood}</small>
+        </a>` + diary;
 
     $("#result").html(diary);
 
