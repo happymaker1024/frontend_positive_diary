@@ -5,24 +5,38 @@ let emoji = '👍'
 function saveHandler() {
     let date = $("#date").val();
     let text = $("#text").val();
-    let mood = $("#mood").val();
 
     diary = `<a href="#" class="list-group-item list-group-item-action">
             <div class="d-flex w-100 justify-content-between">
             <h5 class="mb-1">${text}</h5>
             <small class="text-body-secondary">${date}</small>
             </div>
-            <small class="text-body-secondary">${mood}</small>
+            <small class="text-body-secondary">${emoji}</small>
         </a>` + diary;
 
     $("#result").html(diary);
 
     localStorage.setItem("diary", diary)
 }
+function emojiSelected(event, value){
+    // console.log(value)
+    if (value == 1) {
+        emoji = '👍';
+    } else if (value == 2) {
+        emoji = '⭐'
+    } else if (value == 3) {
+        emoji = '😍';
+    } else if (value == 4) {
+        emoji = '😊';
+    } else if (value == 5) {
+        emoji = '❤️';
+    }
+}
 
 $(document).ready(function() {
     $("#emoji").emoji({
-        emojis: emojis
+        emojis: emojis,
+        callback: emojiSelected
     });
 
     // "diary" 키의 값을 읽어옴
