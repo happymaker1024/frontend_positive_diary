@@ -1,6 +1,22 @@
-localStorage.setItem("test-key", "테스트1입니다");
-localStorage.setItem("test-key2", "테스트2입니다");
-let storage1 = localStorage.getItem("test-key");
-let storage2 = localStorage.getItem("test-key2");
+let diary = "";
 
-console.log(storage1)
+function saveHandler() {
+    let date = $("#date").val();
+    let text = $("#text").val();
+    let mood = $("#mood").val();
+
+    diary = `<p>${date}: ${text} - ${mood}</p>`;
+
+    $("#result").html(diary);
+
+    localStorage.setItem("diary", diary)
+}
+
+$(document).ready(function() {
+    // "diary" 키의 값을 읽어옴
+    diary = localStorage.getItem("diary");
+    // html문서에서 id가 result인 요소에 diary 내용 표시
+    $("#result").html(diary)
+    // html문서에서 id가 save인 요소를 클릭하면 saveHandler 함수 호출
+    $("#save").click(saveHandler);
+});
