@@ -1,4 +1,6 @@
 let diary = "";
+let emojis = ['👍', '⭐', '😍', '😊', '❤️'];
+let emoji = '👍'
 
 function saveHandler() {
     let date = $("#date").val();
@@ -19,6 +21,10 @@ function saveHandler() {
 }
 
 $(document).ready(function() {
+    $("#emoji").emoji({
+        emojis: emojis
+    });
+
     // "diary" 키의 값을 읽어옴
     diary = localStorage.getItem("diary");
 
