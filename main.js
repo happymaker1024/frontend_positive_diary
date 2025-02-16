@@ -6,6 +6,14 @@ function saveHandler() {
     let date = $("#date").val();
     let text = $("#text").val();
 
+    if (date == "") {
+        alert("date를 선택하세요.")
+        return false
+    }
+    if (text == "") {
+        alert("긍정확언을 입력하세요.")
+        return false
+    }
     diary = `<a href="#" class="list-group-item list-group-item-action">
             <div class="d-flex w-100 justify-content-between">
             <h5 class="mb-1">${text}</h5>
@@ -17,6 +25,9 @@ function saveHandler() {
     $("#result").html(diary);
 
     localStorage.setItem("diary", diary)
+    // 저장하고 reset
+    $("#date").val("");
+    $("#text").val("");
 }
 function emojiSelected(event, value){
     // console.log(value)
